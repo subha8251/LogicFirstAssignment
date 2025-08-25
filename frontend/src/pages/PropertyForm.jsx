@@ -86,14 +86,12 @@ export default function PropertyForm() {
           <option value="villa">Villa</option>
           <option value="commercial">Commercial</option>
         </select>
-        {/* City Dropdown */}
         <select value={city} onChange={e => setCity(e.target.value)} className="property-form-input">
           <option value="">Select City</option>
           {["Delhi", "Mumbai", "Bengaluru", "Chennai", "Kolkata", "Hyderabad", "Pune", "Ahmedabad", "Jamshedpur", "Lucknow"].map((c) => (
             <option key={c} value={c}>{c}</option>
           ))}
         </select>
-        {/* State Dropdown */}
         <select value={state} onChange={e => setState(e.target.value)} className="property-form-input">
           <option value="">Select State</option>
           {["Delhi", "Maharashtra", "Karnataka", "Tamil Nadu", "West Bengal", "Telangana", "Gujarat", "Jharkhand", "Uttar Pradesh"].map((s) => (

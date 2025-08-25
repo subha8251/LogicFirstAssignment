@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./PropertyList.css";
+// require("dotenv").config();
 
 export default function PropertyList() {
   const [props, setProps] = useState([]);

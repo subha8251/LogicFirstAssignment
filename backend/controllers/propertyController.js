@@ -1,17 +1,15 @@
 const Property = require("../models/Property");
 
-// helper to read array-like query "type[]" or "type"
 const parseTypeFilter = (q) => {
   let t = q["type[]"] ?? q.type;
   if (!t) return null;
-  if (Array.isArray(t)) return t;          // type[]=pg&type[]=flat
-  return String(t).replace(/[\[\]]/g, "")  // type1,type2] → clean
+  if (Array.isArray(t)) return t;
+  return String(t).replace(/[\[\]]/g, "")
                   .split(",")
                   .map(s => s.trim())
                   .filter(Boolean);
 };
 
-// CREATE
 exports.create = async (req, res) => {
   try {
     const doc = await Property.create(req.body);
@@ -19,7 +17,6 @@ exports.create = async (req, res) => {
   } catch (e) { res.status(400).json({ error: e.message }); }
 };
 
-// GRID (filters + pagination)
 exports.grid = async (req, res) => {
   try {
     const page = Math.max(parseInt(req.query.page || "1",10), 1);
@@ -56,7 +53,6 @@ exports.grid = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-// DETAIL
 exports.detail = async (req, res) => {
   try {
     const doc = await Property.findById(req.params.id);
@@ -65,7 +61,6 @@ exports.detail = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-// UPDATE
 exports.update = async (req, res) => {
   try {
     const doc = await Property.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -74,7 +69,6 @@ exports.update = async (req, res) => {
   } catch (e) { res.status(400).json({ error: e.message }); }
 };
 
-// DELETE
 exports.remove = async (req, res) => {
   try {
     await Property.findByIdAndDelete(req.params.id);
@@ -82,7 +76,6 @@ exports.remove = async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 };
 
-// BULK DELETE
 exports.bulkDelete = async (req, res) => {
   try {
     const ids = req.body.ids || [];

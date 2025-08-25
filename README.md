@@ -21,7 +21,6 @@ logicFirstAssignment/
 │   │   └── Property.js
 │   ├── routes/
 │   │   └── propertyRoutes.js
-│   ├── seed.js
 │   └── server.js
 │
 ├── frontend/               # React app

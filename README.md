@@ -90,7 +90,7 @@ npm install
 
 ### 3. Configure MongoDB
 - By default, the backend connects to `mongodb://localhost:27017/propertydb`.
-- To use a different URI, edit `.env` or `backend/config/db.js`.s
+- To use a different URI, edit `.env` or `backend/config/db.js`.
 
 ### 4. Start the backend server
 ```
